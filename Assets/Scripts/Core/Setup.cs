@@ -1,10 +1,13 @@
 ﻿using Photon.Pun;
+using TMPro;
 using UnityEngine;
 
 namespace AirHockey.Core
 {
     public class Setup : MonoBehaviour
     {
+        public TextMeshProUGUI debug = null;
+
         [SerializeField] private Transform _p1Pivot = null;
         [SerializeField] private Transform _p2Pivot = null;
 
@@ -13,7 +16,7 @@ namespace AirHockey.Core
             if (!PhotonNetwork.IsConnected)
                 return;
 
-            if (PhotonNetwork.IsMasterClient)
+            if(PhotonNetwork.IsMasterClient)
             {
                 var p1 = PhotonNetwork.Instantiate("Player", _p1Pivot.position, Quaternion.identity);
                 p1.name = "Player_Master";
