@@ -14,7 +14,7 @@ namespace AirHockey.Core
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 var input = other.gameObject.GetComponent<InputHandler>();
-                _move.Execute(input.Displacement * other.contacts[0].normal * _multiplier);
+                _move.Execute(input.Displacement * _multiplier);
             }
         }
     }
