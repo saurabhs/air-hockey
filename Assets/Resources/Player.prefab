@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e47e511e17700d40891c96d1258c9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dragMultiplier: 500
+  _dragMultiplier: 128
 --- !u!114 &3649427525094191254
 MonoBehaviour:
   m_ObjectHideFlags: 0
