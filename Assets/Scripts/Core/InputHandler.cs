@@ -17,7 +17,7 @@ namespace AirHockey.Core
 
         public void OnDrag(PointerEventData eventData)
         {
-            //if(_view.IsMine)
+            if(_view.IsMine)
             {
                 _displacement = new Vector3(eventData.delta.x, eventData.delta.y, 0);
                 transform.position += _displacement / _dragMultiplier;
