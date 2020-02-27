@@ -15,6 +15,10 @@ namespace AirHockey.Network
                 PhotonNetwork.ConnectUsingSettings();
         }
 
+        public override void OnEnable() => PhotonNetwork.AddCallbackTarget(this);
+
+        public override void OnDisable() => PhotonNetwork.RemoveCallbackTarget(this);
+
         public override void OnConnectedToMaster()
         {
             PhotonNetwork.JoinLobby(TypedLobby.Default);
@@ -25,9 +29,16 @@ namespace AirHockey.Network
             PhotonNetwork.JoinOrCreateRoom($"AirHockeyRoom", new RoomOptions() { IsVisible = false, MaxPlayers = 2 }, TypedLobby.Default);
         }
 
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            //newPlayer
+        }
+
         public override void OnJoinedRoom()
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Main", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            PhotonNetwork.LocalPlayer.NickName = $"Player_{Random.Range(0, 10000)}";
+            PhotonNetwork.LoadLevel("Main");
         }
+
     }
 }

@@ -13,8 +13,6 @@ namespace AirHockey.Core
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-            print("OnPhotonSerializeView");
-
             if (stream.IsWriting)
             {
                 stream.SendNext(transform.position);

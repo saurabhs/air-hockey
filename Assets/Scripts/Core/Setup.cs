@@ -8,9 +8,6 @@ namespace AirHockey.Core
         [SerializeField] private Transform _p1Pivot = null;
         [SerializeField] private Transform _p2Pivot = null;
 
-        [SerializeField] private Color _p1Color = Color.red;
-        [SerializeField] private Color _p2Color = Color.blue;
-
         public void Awake()
         {
             if (!PhotonNetwork.IsConnected)
@@ -19,14 +16,15 @@ namespace AirHockey.Core
             if (PhotonNetwork.IsMasterClient)
             {
                 var p1 = PhotonNetwork.Instantiate("Player", _p1Pivot.position, Quaternion.identity);
-                p1.GetComponent<SpriteRenderer>().color = _p1Color;
+                p1.name = "Player_Master";
 
-                PhotonNetwork.Instantiate("Puck", Vector2.zero, Quaternion.identity);
+                var puck = PhotonNetwork.Instantiate("Puck", Vector2.zero, Quaternion.identity);
+                puck.name = "Puck";
             }
             else
             {
                 var p2 = PhotonNetwork.Instantiate("Player", _p2Pivot.position, Quaternion.identity);
-                p2.GetComponent<SpriteRenderer>().color = _p2Color;
+                p2.name = "Player_Client";
             }
         }
     }
