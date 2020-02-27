@@ -21,17 +21,13 @@ namespace AirHockey.Network
 
         public override void OnConnectedToMaster()
         {
+            PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.JoinLobby(TypedLobby.Default);
         }
 
         public override void OnJoinedLobby()
         {
             PhotonNetwork.JoinOrCreateRoom($"AirHockeyRoom", new RoomOptions() { IsVisible = false, MaxPlayers = 2 }, TypedLobby.Default);
-        }
-
-        public override void OnPlayerEnteredRoom(Player newPlayer)
-        {
-            //newPlayer
         }
 
         public override void OnJoinedRoom()
